@@ -6,10 +6,9 @@
  - Step 5/5: Check if there are lines starting with lowercase. We need to manually go to those files and check if those newlines are parsing/conversion mistakes.
 
 # Usage
-First, open clean-artifacts.sh and substitute OURPATH='' by the path to the folder with the text files
-Then, execute in a command-line terminal:
+Execute in a command-line terminal:
 
 chmod 775 clean-artifacts.sh
-./clean-artifacts.sh
+./clean-artifacts.sh -a IN_PATH -b OUT_PATH 
 
-Processed files are stored in a folder named with -output in the parent directory of $OURPATH
+Processed files are stored in OUT_PATH
