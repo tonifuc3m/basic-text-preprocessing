@@ -59,21 +59,20 @@ echo "------------------------------------------------"
 
 ## Remove HTML errors 
 printf "\n\nStep 3/5: Remove common HTML errors\n"
-ALLTXT="${OUT_DIR}/*.txt"
-echo "sed -i 's/&mu;/µ/g' ${ALLTXT}
-sed -i 's/&rsquo;/'\''/g' ${ALLTXT}
-sed -i 's/&ge;/≥/g' ${ALLTXT}
-sed -i 's/&le;/≤/g' ${ALLTXT}
-sed -i 's/&beta;/β/g' ${ALLTXT}
-sed -i 's/&alpha;/α/g' ${ALLTXT}
-sed -i 's/&mdash;/-/g' ${ALLTXT}"
-sed -i 's/&mu;/µ/g' $ALLTXT
-sed -i 's/&rsquo;/'\''/g' $ALLTXT
-sed -i 's/&ge;/≥/g' $ALLTXT
-sed -i 's/&le;/≤/g' $ALLTXT
-sed -i 's/&beta;/β/g' $ALLTXT
-sed -i 's/&alpha;/α/g' $ALLTXT
-sed -i 's/&mdash;/-/g' $ALLTXT
+echo "find ${OUT_DIR} -name '*txt' -exec sed -i 's/&mu;/µ/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&rsquo;/'\''/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&ge;/≥/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&le;/≤/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&beta;/β/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&alpha;/α/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&mdash;/-/g' {} \;"
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&mu;/µ/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&rsquo;/'\''/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&ge;/≥/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&le;/≤/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&beta;/β/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&alpha;/α/g' {} \;
+find ${OUT_DIR} -name '*txt' -exec sed -i 's/&mdash;/-/g' {} \;
 echo "------------------------------------------------"
 
 ## Extra: quick-prepro.py

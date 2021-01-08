@@ -9,6 +9,7 @@ Quick preprocessing for txt files
 import os
 import argparse
 import re
+import unicodedata
 
 def argparser():
     '''
@@ -51,9 +52,9 @@ def quick_prepro(file, old2new_simple, old2new_regex):
     for k,v in old2new_regex.items():
         txt = re.sub(k,v, txt)
         
-    # Rewrite good file 
+    # Rewrite good file with NFKC Unicode
     with open(os.path.join(r, file), 'w') as f:
-        f.write(txt)
+        f.write(unicodedata.normalize('NFKC', txt))
 
 if __name__ == '__main__':
     path = argparser()
