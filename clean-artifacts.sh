@@ -33,8 +33,8 @@ echo "mkdir -p $OUT_DIR"
 mkdir -p $OUT_DIR
 
 printf "\n\nCreate a copy of directory\n"
-echo "cp -r ${IN_DIR} ${OUT_DIR}"
-cp -r $IN_DIR $OUT_DIR
+echo "cp ${IN_DIR}/* ${OUT_DIR}/."
+cp $IN_DIR/* $OUT_DIR/.
 echo "------------------------------------------------"
 
 ## dos2unix 
