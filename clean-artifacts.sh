@@ -33,8 +33,9 @@ echo "mkdir -p $OUT_DIR"
 mkdir -p $OUT_DIR
 
 printf "\n\nCreate a copy of directory\n"
-echo "cp ${IN_DIR}/* ${OUT_DIR}/."
-cp $IN_DIR/* $OUT_DIR/.
+echo "find ${IN_DIR} -type f -exec cp {} ${OUT_DIR}/. \;"
+#cp $IN_DIR/* $OUT_DIR/.
+find ${IN_DIR} -type f -exec cp {} ${OUT_DIR}/. \;
 echo "------------------------------------------------"
 
 ## dos2unix 
