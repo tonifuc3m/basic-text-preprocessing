@@ -60,20 +60,20 @@ echo "------------------------------------------------"
 
 ## Remove HTML errors 
 printf "\n\nStep 3/5: Remove common HTML errors\n"
-echo "find ${OUT_DIR} -name '*txt' -exec sed -i 's/&mu;/µ/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&rsquo;/'\''/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&ge;/≥/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&le;/≤/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&beta;/β/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&alpha;/α/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&mdash;/-/g' {} \;"
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&mu;/µ/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&rsquo;/'\''/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&ge;/≥/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&le;/≤/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&beta;/β/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&alpha;/α/g' {} \;
-find ${OUT_DIR} -name '*txt' -exec sed -i 's/&mdash;/-/g' {} \;
+echo "find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&mu;/µ/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&rsquo;/'\''/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&ge;/≥/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&le;/≤/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&beta;/β/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&alpha;/α/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&mdash;/-/g' {} \;"
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&mu;/µ/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&rsquo;/'\''/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&ge;/≥/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&le;/≤/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&beta;/β/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&alpha;/α/g' {} \;
+find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&mdash;/-/g' {} \;
 echo "------------------------------------------------"
 
 ## Extra: quick-prepro.py
