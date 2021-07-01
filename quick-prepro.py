@@ -10,6 +10,7 @@ import os
 import argparse
 import re
 import unicodedata
+import codecs
 
 def argparser():
     '''
@@ -20,7 +21,9 @@ def argparser():
                         help = "path to directory with txt files")
     return parser.parse_args().path
 
-def quick_prepro(file, old2new_simple, old2new_regex):
+pattern = re.compile("[^\S+\r\n]")
+
+def quick_prepro(file, old2new_simple, old2new_regex, pattern):
     '''
     Substitute/remove patterns in text file
     
@@ -52,21 +55,28 @@ def quick_prepro(file, old2new_simple, old2new_regex):
     for k,v in old2new_regex.items():
         txt = re.sub(k,v, txt)
         
+    # Remove all multiple whitespaces by ' ' except \n and \r
+    txt = pattern.sub(' ', txt)
+
+    # Remove whitespaces at the beginning and ending of string
+    tmp = []
+    for line in txt.split('\n'):
+        tmp.append(line.strip())
+    txt = '\n'.join(tmp).strip('\n')
+
+
     # Rewrite good file with NFKC Unicode
-    with open(os.path.join(r, file), 'w') as f:
-        f.write(unicodedata.normalize('NFKC', txt))
+    with codecs.open(os.path.join(r, file), 'w', 'utf-8') as f:
+        f.write(unicodedata.normalize('NFKC', txt).encode("utf-8").decode("utf-8"))
 
 if __name__ == '__main__':
     path = argparser()
     
     # Define substitution dictionaries
-    old2new_simple = {u'\xa0':u' ', # Substitute Latin1 non-breaking space by blankspace
-                      u'\uf0fc':'', # Remove 
+    old2new_simple = {u'\uf0fc':'', # Remove 
                       u'\uf0b7':'', # remove 
-                      u'\u200c':'', # Substitute zero width non-joiner by blankspace
-                      '  ':' ', # Remove double blankspaces
-                      u'\t': ' ', # Substitute tabs by blankspace
                       u'”':'"', # substitute ” by "
+                      u'\r':'\n', # substitute \r by \n
                       u'“':'"', # substitute “ by "
                       u'’':'"'} # substitute ’ by '
                       #u'\uFFFD':' '} # Subst � by blankspace -> I am not doing this
@@ -78,4 +88,4 @@ if __name__ == '__main__':
         for file in f:
             if file.split('.')[-1] != 'txt':
                 continue
-            quick_prepro(file, old2new_simple, old2new_regex)
+            quick_prepro(file, old2new_simple, old2new_regex, pattern)
