@@ -77,7 +77,7 @@ find ${OUT_DIR} -type f -name '*txt' -exec sed -i 's/&mdash;/-/g' {} \;
 echo "------------------------------------------------"
 
 ## Extra: quick-prepro.py
-printf "\n\nStep 4/5: Quick substitution of common errors\n"
+printf "\n\nStep 4/5: Quick substitution of common errors and Unicode normalization\n"
 echo "python quick-prepro.py -d ${OUT_DIR}"
 python quick-prepro.py -d $OUT_DIR
 echo "------------------------------------------------"
